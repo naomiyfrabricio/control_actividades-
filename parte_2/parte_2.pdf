@@ -34,7 +34,7 @@ Explicación:	Después	de	hacer	Push,	los	cambios	solamente	existen	en	la	rama	d
 original	del	otro	desarrollador.	Para	que	esos	cambios	se	incorporen	al	repositorio	original	es	necesario	abrir	un	Pull	Request,	donde	se
 solicita	formalmente	que	la	rama	modificada	sea	integrada.	El	propietario	del	repositorio	original	debe	revisar	el	Pull	Request	(Review)	y,
 si	lo	aprueba,	realizar	el	Merge.	Solo	hasta	ese	momento	los	cambios	pasan	a	formar	parte	del	repositorio	original.
-4.	Request	Changes 
+4.	Request	Changes
 Planteamiento:	El	propietario	revisa	tu	Pull	Request	y	selecciona	Request	Changes.	Explica	qué	debes	hacer,	si	necesitas	crear	otro	Pull
 Request	y	qué	ocurre	cuando	realizas	nuevamente	push.
 Respuesta:	Debo	corregir	el	código	en	mi	rama	local	según	los	comentarios	de	la	revisión,	hacer	commit	de	esas	correcciones	y	volver	a
