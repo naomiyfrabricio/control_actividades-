@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Control de Actividades
 
 Proyecto desarrollado como parte del primer examen parcial.
@@ -19,3 +20,6 @@ Naomi Ramirez Estrada
 Proyecto en etapa inicial.
 
 
+=======
+# control_actividades-
+>>>>>>> 420dddd5a1ff95b5d7964b036524a4f28cab8415
