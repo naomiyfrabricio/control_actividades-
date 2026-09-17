@@ -3,4 +3,6 @@
 - Registrar actividades.
 - Consultar actividades.
 - Modificar actividades.
-EOF
+
+- Marcar actividades como terminadas.
+- Asignar una fecha a las actividades.
