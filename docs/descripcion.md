@@ -20,7 +20,7 @@ cat > README.md << 'EOF'
 
 Proyecto desarrollado como parte del primer examen parcial.
 
-## Objetivo
+## Objetivo 
 
 Preparar la estructura inicial de un proyecto utilizando Python, Git y GitHub.
 
