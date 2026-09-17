@@ -1,0 +1,65 @@
+1.	Diferencia	entre	Git	y	GitHub
+Pregunta:	Explica	la	diferencia	entre	Git	y	GitHub.
+Respuesta:	Git	es	un	sistema	de	control	de	versiones:	un	programa	que	se	instala	y	ejecuta	localmente	en	la	computadora	para	registrar	el
+historial	de	cambios	de	un	proyecto	(commits,	ramas,	comparaciones,	fusiones,	etc.),	sin	necesidad	de	conexión	a	internet.	GitHub,	en
+cambio,	es	una	plataforma	en	línea	que	aloja	repositorios	de	Git	en	la	nube	y	añade	herramientas	de	colaboración	alrededor	de	Git,	como
+Fork,	Pull	Request,	Review,	gestión	de	issues	y	control	de	acceso	entre	varios	usuarios.	En	otras	palabras,	Git	es	la	herramienta	que
+versiona	el	código,	y	GitHub	es	un	servicio	remoto	que	almacena	esos	repositorios	y	facilita	que	varias	personas	colaboren	sobre	ellos.	Se
+puede	usar	Git	sin	GitHub	(por	ejemplo,	con	un	repositorio	solo	local),	pero	GitHub	necesita	a	Git	como	base	para	funcionar.
+2.	Para	qué	sirve	.gitignore
+Pregunta:	Explica	para	qué	sirve	.gitignore.
+Respuesta:	El	archivo	
+.gitignore	le	indica	a	Git	qué	archivos	o	carpetas	debe	ignorar,	es	decir,	no	rastrear	ni	incluir	en	los	commits	ni
+en	el	repositorio	remoto.	Sirve	para	excluir	elementos	que	no	deben	formar	parte	del	control	de	versiones,	como	archivos	temporales,
+entornos	virtuales,	archivos	compilados,	credenciales	o	configuraciones	específicas	de	cada	máquina	(por	ejemplo	
+__pycache__/ ,	
+*.pyc ,	
+.env ,	
+.venv/ ,	
+.DS_Store ).	Esto	mantiene	el	repositorio	limpio,	evita	subir	información	sensible	o	innecesaria,	y	reduce
+el	tamaño	del	historial,	ya	que	Git	ignora	automáticamente	cualquier	archivo	o	carpeta	que	coincida	con	los	patrones	listados	en	ese
+archivo.
+3.	Por	qué	.venv	no	debe	almacenarse	en	GitHub
+Pregunta:	Explica	por	qué	.venv	no	debe	almacenarse	normalmente	en	GitHub.
+Respuesta:	La	carpeta	
+.venv	contiene	el	entorno	virtual	de	Python,	es	decir,	una	copia	del	intérprete	y	de	todas	las	bibliotecas	instaladas
+para	ese	proyecto	en	esa	máquina	específica.	Este	contenido	es	voluminoso,	depende	del	sistema	operativo	y	de	la	versión	de	Python	usada,
+y	puede	regenerarse	fácilmente	en	cualquier	equipo	a	partir	del	archivo	
+requirements.txt .	Subirlo	a	GitHub	aumentaría
+innecesariamente	el	tamaño	del	repositorio,	generaría	conflictos	entre	entornos	de	distintas	máquinas	y	no	aporta	ningún	valor	al	control
+de	versiones	del	código	fuente.	Por	eso	
+.venv/	se	agrega	al	
+.gitignore	y	cada	persona	genera	su	propio	entorno	virtual	localmente	a
+partir	de	las	dependencias	declaradas.
+4.	Para	qué	sirve	requirements.txt
+Pregunta:	Explica	para	qué	sirve	requirements.txt.
+Respuesta:	
+requirements.txt	es	un	archivo	de	texto	que	enumera	las	bibliotecas	(dependencias)	de	Python	que	utiliza	el	proyecto,
+normalmente	con	su	nombre	y	versión.	Su	propósito	es	permitir	que	cualquier	otra	persona	(o	la	misma	persona	en	otra	máquina)	pueda
+reconstruir	el	entorno	virtual	exacto	necesario	para	ejecutar	el	proyecto,	instalando	todas	las	dependencias	con	un	solo	comando	(
+install	-r	requirements.txt ).	De	esta	forma	no	es	necesario	compartir	la	carpeta	
+proyecto	sea	reproducible	en	cualquier	computadora.
+pip	
+.venv ;	basta	con	compartir	este	archivo	para	que	el
+5.	Diferencia	entre	Stage,	Commit	y	Push
+Pregunta:	Explica	la	diferencia	entre	Stage,	Commit	y	Push.
+Respuesta:	Son	tres	pasos	distintos	y	consecutivos	del	flujo	de	trabajo	de	Git:
+Stage	(
+git	add )	—	selecciona	qué	cambios,	de	todos	los	que	existen	en	el	directorio	de	trabajo,	se	incluirán	en	el	próximo	commit.
+Es	un	paso	intermedio	de	preparación;	los	cambios	en	staging	todavía	no	forman	parte	del	historial.
+Commit	(
+git	commit )	—	toma	lo	que	está	en	el	área	de	staging	y	lo	registra	de	forma	permanente	en	el	historial	local	del
+repositorio,	junto	con	un	mensaje	descriptivo.	Cada	commit	es	un	punto	de	guardado	al	que	se	puede	volver.
+Push	(
+git	push )	—	envía	los	commits	que	existen	en	el	repositorio	local	hacia	el	repositorio	remoto	(por	ejemplo,	en	GitHub),	para
+que	estén	disponibles	para	otras	personas	o	como	respaldo	en	la	nube.
+Explicación:	El	orden	siempre	es	Stage	→	Commit	→	Push,	y	cada	paso	opera	en	un	nivel	distinto:	Stage	trabaja	sobre	el	directorio	de
+trabajo,	Commit	sobre	el	historial	local,	y	Push	sobre	el	repositorio	remoto.
+6.	Varios	commits	antes	de	un	push
+Pregunta:	Explica	por	qué	un	repositorio	puede	tener	varios	commits	antes	de	realizar	un	push.
+Respuesta:	Porque	el	commit	y	el	push	son	operaciones	independientes:	el	commit	guarda	cambios	únicamente	en	el	historial	local,	sin
+necesidad	de	conexión	a	internet	ni	de	interactuar	con	el	repositorio	remoto.	Es	completamente	normal	y	buena	práctica	hacer	varios
+commits	pequeños	y	descriptivos	conforme	se	avanza	en	el	trabajo	(por	ejemplo,	uno	por	cada	cambio	lógico),	y	hasta	acumular	varios	de
+ellos	localmente	antes	de	decidir	enviarlos	todos	juntos	al	repositorio	remoto	con	un	solo	
+git	push .	Esto	permite	llevar	un	historial	local
+detallado	y	organizado,	y	decidir	en	qué	momento	conviene	publicar	ese	avance	para	que	esté	disponible	en	GitHub

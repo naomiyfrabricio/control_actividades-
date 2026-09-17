@@ -1,0 +1,65 @@
+1.	Flujo	colaborativo
+Planteamiento:	Supón	que	quieres	colaborar	con	el	repositorio	de	otro	desarrollador.	Ordena	y	explica	los	siguientes	elementos:	Push,
+Fork,	Pull	Request,	Clone,	Merge,	Commit,	Review,	Branch	y	Modificar	archivos.	Agrega	cualquier	operación	que	consideres	necesaria.
+Respuesta:	El	orden	correcto	es:
+1.	Fork	—	creo	una	copia	del	repositorio	original	dentro	de	mi	propia	cuenta	de	GitHub.
+2.	Clone	—	descargo	esa	copia	(mi	fork)	a	mi	computadora	para	trabajar	en	ella	localmente.
+3.	Branch	—	creo	una	rama	nueva	dentro	de	mi	repositorio	local	para	aislar	el	trabajo	que	voy	a	hacer,	sin	afectar	la	rama	principal.
+4.	Modificar	archivos	—	realizo	los	cambios	de	código	o	documentación	que	se	necesitan.
+5.	Commit	—	registro	esos	cambios	en	el	historial	local	de	Git,	con	un	mensaje	que	describe	lo	que	se	hizo.
+6.	Push	—	envío	la	rama	con	los	commits	desde	mi	repositorio	local	hacia	mi	fork	en	GitHub.
+7.	Pull	Request	—	desde	GitHub,	solicito	que	los	cambios	de	mi	rama	sean	incorporados	al	repositorio	original	del	otro	desarrollador.
+8.	Review	—	el	propietario	del	repositorio	original	revisa	el	Pull	Request:	lee	el	código,	comenta	y	decide	si	lo	aprueba	o	pide	cambios.
+9.	Merge	—	si	la	revisión	es	satisfactoria,	el	propietario	fusiona	(integra)	los	cambios	de	mi	rama	dentro	de	la	rama	principal	del
+repositorio	original.
+Explicación:	Este	flujo	es	el	estándar	para	colaborar	en	proyectos	de	terceros	en	GitHub.	Fork	y	Clone	preparan	el	entorno	de	trabajo
+(uno	en	la	nube,	otro	local);	Branch	aísla	el	trabajo	para	no	afectar	código	estable;	Modificar,	Commit	y	Push	conforman	el	ciclo	normal	de
+guardar	avances;	y	Pull	Request,	Review	y	Merge	son	el	mecanismo	de	control	de	calidad	que	permite	que	el	dueño	del	proyecto	original
+apruebe	o	rechace	las	contribuciones	antes	de	integrarlas.
+2.	Fork	y	Clone
+Planteamiento:	Analiza	la	afirmación:	“Clone	crea	una	copia	del	proyecto	dentro	de	mi	cuenta	de	GitHub”.	Indica	si	es	correcta	y	explica
+la	diferencia	entre	Fork	y	Clone.
+Respuesta:	La	afirmación	es	incorrecta.
+Explicación:	Clone	no	crea	ninguna	copia	dentro	de	una	cuenta	de	GitHub;	lo	que	hace	es	descargar	el	repositorio	(todo	su	historial	y
+archivos)	desde	GitHub	hacia	el	disco	duro	de	la	computadora,	para	poder	trabajar	en	él	localmente	con	Git.	Quien	hace	la	copia	dentro	de
+una	cuenta	de	GitHub	es	Fork:	genera	un	nuevo	repositorio,	independiente	pero	enlazado	al	original,	dentro	de	la	cuenta	de	GitHub	de
+quien	hace	el	fork.	En	resumen,	Fork	trabaja	a	nivel	de	GitHub	(servidor,	entre	cuentas)	y	Clone	trabaja	a	nivel	local	(de	GitHub	hacia	la
+máquina	del	desarrollador).	Es	común	usar	ambos	en	conjunto:	primero	Fork	para	tener	mi	propia	copia	remota,	y	después	Clone	para
+traer	esa	copia	a	mi	computadora.
+3.	Pull	Request
+Planteamiento:	Supón	que	realizaste	Fork,	Clone,	Branch,	Modificar,	Commit	y	Push.	Responde:	¿los	cambios	ya	forman	parte	del
+repositorio	original?	¿Qué	debe	ocurrir	para	incorporarlos?
+Respuesta:	No,	los	cambios	todavía	no	forman	parte	del	repositorio	original.
+Explicación:	Después	de	hacer	Push,	los	cambios	solamente	existen	en	la	rama	del	fork	(mi	copia	remota	en	GitHub),	no	en	el	repositorio
+original	del	otro	desarrollador.	Para	que	esos	cambios	se	incorporen	al	repositorio	original	es	necesario	abrir	un	Pull	Request,	donde	se
+solicita	formalmente	que	la	rama	modificada	sea	integrada.	El	propietario	del	repositorio	original	debe	revisar	el	Pull	Request	(Review)	y,
+si	lo	aprueba,	realizar	el	Merge.	Solo	hasta	ese	momento	los	cambios	pasan	a	formar	parte	del	repositorio	original.
+4.	Request	Changes
+Planteamiento:	El	propietario	revisa	tu	Pull	Request	y	selecciona	Request	Changes.	Explica	qué	debes	hacer,	si	necesitas	crear	otro	Pull
+Request	y	qué	ocurre	cuando	realizas	nuevamente	push.
+Respuesta:	Debo	corregir	el	código	en	mi	rama	local	según	los	comentarios	de	la	revisión,	hacer	commit	de	esas	correcciones	y	volver	a
+hacer	push	a	la	misma	rama.	No	es	necesario	crear	un	nuevo	Pull	Request.
+Explicación:	El	Pull	Request	está	vinculado	a	una	rama	específica,	no	a	un	conjunto	fijo	de	commits.	Cuando	se	hace	push	de	nuevos
+commits	a	esa	misma	rama,	GitHub	actualiza	automáticamente	el	Pull	Request	existente	con	los	cambios	más	recientes,	y	queda	disponible
+para	que	el	propietario	lo	revise	otra	vez.	Este	ciclo	(Request	Changes	→	corrección	→	commit	→	push)	puede	repetirse	las	veces	que	sea
+necesario	hasta	que	el	revisor	apruebe	el	Pull	Request	y	proceda	el	Merge.
+5.	Merge	y	repositorio	local
+Planteamiento:	Un	Pull	Request	fue	aceptado	y	se	realizó	Merge	en	GitHub.	Sin	embargo,	el	repositorio	local	del	propietario	no	contiene
+los	cambios.	Explica	por	qué	sucede	y	qué	operación	debe	realizarse.
+Respuesta:	Esto	ocurre	porque	el	Merge	se	realizó	únicamente	en	el	repositorio	remoto	(GitHub);	el	repositorio	local	del	propietario	no	se
+actualiza	automáticamente.	Para	reflejar	los	cambios	localmente,	el	propietario	debe	ejecutar	git	pull	sobre	su	rama	principal.
+Explicación:	Git	separa	claramente	el	estado	del	repositorio	remoto	del	estado	del	repositorio	local;	una	acción	realizada	en	la	interfaz
+web	de	GitHub	(como	Merge)	no	se	propaga	sola	a	las	copias	locales	de	nadie,	incluido	el	propio	dueño	del	repositorio.	
+git	pull
+descarga	los	commits	nuevos	del	remoto	y	los	integra	en	la	rama	local	correspondiente,	sincronizando	así	ambas	copias.
+6.	Sync	Fork
+Planteamiento:	Tu	Fork	fue	creado	varios	días	atrás	y	el	repositorio	original	recibió	nuevos	commits.	Explica	qué	herramienta	utilizarías,
+qué	repositorio	se	actualiza	y	qué	diferencia	existe	entre	Sync	Fork	y	git	pull.
+Respuesta:	Utilizaría	la	opción	Sync	Fork	de	GitHub.	Esta	actualiza	mi	fork	(mi	repositorio	remoto	en	GitHub),	trayendo	hacia	él	los
+commits	nuevos	que	existen	en	el	repositorio	original.
+Explicación:	Sync	Fork	y	git	pull	resuelven	un	problema	parecido	pero	en	niveles	distintos.	Sync	Fork	actualiza	el	repositorio	remoto	(mi
+fork	en	GitHub)	tomando	los	cambios	del	repositorio	original	(upstream),	todo	dentro	del	servidor	de	GitHub.	
+git	pull ,	en	cambio,
+actualiza	mi	repositorio	local	trayendo	los	cambios	desde	un	repositorio	remoto	(normalmente	mi	propio	fork).	Por	lo	tanto,	para	tener	el
+código	más	reciente	del	proyecto	original	disponible	localmente,	normalmente	se	necesitan	ambos	pasos	en	secuencia:	primero	Sync	Fork
+(remoto	original	→	mi	fork	remoto)	y	después	git	pull	(mi	fork	remoto	→	mi	copia	local)

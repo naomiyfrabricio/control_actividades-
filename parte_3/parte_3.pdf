@@ -1,0 +1,70 @@
+1.	Analiza	la	secuencia	de	comandos
+Planteamiento:
+git	status
+git	add	README.md
+git	commit	-m	"Actualiza	documentación"
+git	push
+Explica	qué	ocurre	en	cada	instrucción.
+Respuesta	y	explicación:
+git	status	—	Muestra	el	estado	actual	del	repositorio:	qué	archivos	fueron	modificados,	cuáles	están	en	el	área	de	staging	y
+cuáles	no	están	siendo	rastreados.	No	modifica	nada;	es	una	instrucción	de	consulta	que	se	usa	para	revisar	antes	de	actuar.
+git	add	README.md	—	Mueve	el	archivo	
+README.md	al	área	de	staging	(índice).	Esto	marca	ese	archivo	específico	como	listo	para
+incluirse	en	el	siguiente	commit,	sin	afectar	a	los	demás	archivos	modificados.
+git	commit	-m	"Actualiza	documentación"	—	Crea	un	nuevo	commit	en	el	historial	local	con	los	cambios	que	estaban	en	el	área
+de	staging	(en	este	caso,	
+README.md ),	guardando	una	“fotografía”	de	ese	cambio	junto	con	el	mensaje	descriptivo	indicado.
+git	push	—	Envía	los	commits	que	existen	en	la	rama	local	(incluyendo	el	que	se	acaba	de	crear)	hacia	el	repositorio	remoto	en
+GitHub,	actualizando	la	rama	correspondiente	en	el	servidor.
+En	conjunto,	esta	secuencia	representa	el	flujo	básico	de	Git:	revisar	el	estado,	preparar	(stage)	los	cambios	deseados,	confirmarlos	en	el
+historial	local	(commit)	y	finalmente	publicarlos	en	el	repositorio	remoto	(push).
+2.	Identifica	qué	falta
+Caso	A
+Planteamiento:
+Modificar	archivo
+↓
+git	add	.
+↓
+¿?
+↓
+git	push
+Respuesta:	La	operación	que	falta	es	
+Explicación:	
+git	commit	-m	"mensaje	descriptivo" .
+git	add	.	únicamente	coloca	todos	los	archivos	modificados	en	el	área	de	staging;	todavía	no	crea	ningún	registro	en	el
+historial.	Antes	de	poder	hacer	
+git	push ,	es	indispensable	ejecutar	
+git	commit	para	convertir	esos	cambios	en	staging	en	un	commit
+real	dentro	del	historial	local.	
+git	push	solo	envía	commits	ya	existentes,	por	lo	que	sin	el	commit	intermedio	no	habría	nada	nuevo	que
+enviar	al	repositorio	remoto.
+Caso	B
+Planteamiento:
+Repositorio	GitHub
+↓
+¿?
+↓
+Repositorio	local
+Respuesta:	La	operación	es	
+git	clone	(o	
+git	pull ,	si	el	repositorio	local	ya	existe).
+Explicación:	Cuando	todavía	no	existe	una	copia	local	del	proyecto,	
+git	clone	es	la	operación	que	descarga	el	repositorio	completo
+(todos	los	archivos	y	todo	el	historial	de	commits)	desde	GitHub	y	crea	el	repositorio	local	por	primera	vez.	Si	el	repositorio	local	ya
+existiera	y	solo	se	quisiera	traer	los	cambios	nuevos	del	remoto,	la	operación	adecuada	sería	
+Caso	C
+Planteamiento:
+Repositorio	remoto	actualizado
+↓
+¿?
+↓
+Repositorio	local	actualizado
+git	pull	en	lugar	de	
+git	clone .
+Respuesta:	La	operación	es	
+Explicación:	
+git	pull .
+git	pull	descarga	los	commits	nuevos	que	existen	en	el	repositorio	remoto	y	los	integra	(fusiona)	en	la	rama
+correspondiente	del	repositorio	local,	sincronizando	la	copia	local	con	lo	que	ya	está	actualizado	en	GitHub.	Es	la	operación	adecuada
+cuando	el	repositorio	local	ya	existe	y	solo	se	necesita	traer	los	cambios	más	recientes,	a	diferencia	de	
+para	crear	la	copia	local	por	primera	vez
